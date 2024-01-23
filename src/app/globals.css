@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradiant-bg::before {
+	content: '';
+	background: radial-gradient(
+		20% 50% at 50% 50%,
+		rgba(71, 127, 247, 376) 0,
+		rgba(37, 38, 44, 0) 100%
+	);
+	position: absolute;
+	z-index: -10;
+	transform: scale(2);
+	inset: 0;
+	pointer-events: none;
+}
+
+@media screen and (max-width: 1100px) {
+	.gradiant-bg::before {
+		transform: scale(1);
+	}
+}
+
+.animated_card,
+.animated_card2 {
+	display: grid;
+	place-items: center;
+	position: relative;
+	height: 500px;
+	width: 350px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.animated_card::before {
+	position: absolute;
+	content: '';
+	height: 500px;
+	width: 350;
+	background: tomato;
+	border-radius: 15px;
+	z-index: -1;
+	transition: 0.3s;
+	animation: animate 2s linear infinite;
+}
+
+.animated_card:hover::before {
+	height: 524px;
+	width: 362px;
+}
+
+@keyframes animate {
+	50% {
+		filter: hue-rotate(350deg);
+	}
+}
+
+.animated_card2 {
+	overflow: hidden;
+}
+
+.animated_card2::before {
+	position: absolute;
+	content: '';
+	width: 50%;
+	height: 180%;
+	background-color: #fff;
+	transform: rotate(45deg);
+}
+
+.animated_card2:hover::before {
+	animation: animate2 2s linear infinite;
+}
+
+@keyframes animate2 {
+	from {
+		transform: rotate(45deg);
+	}
+	to {
+		transform: rotate(405deg);
+	}
+}
+
+.animated_card2::after {
+	position: absolute;
+	content: '';
+	inset: 5px;
+	background: red;
+	border-radius: 8px;
+}
